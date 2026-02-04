@@ -63,38 +63,14 @@ export default function RoomPage() {
     };
     setCurrentPlayer(player);
 
-    // デモ用：他のプレイヤーを追加
-    const demoPlayers: Player[] = [
-      player,
-      { id: '2', name: '大喜利マスター', colorSeed: 25, isHost: false, totalZabuton: 3 },
-      { id: '3', name: '座布団コレクター', colorSeed: 50, isHost: false, totalZabuton: 7 },
-    ];
-    setPlayers(demoPlayers);
+    // 自分だけをプレイヤーリストに追加
+    setPlayers([player]);
 
-    // 初期お題を設定
-    setCurrentTopic('「最新のAIに足りないもの」とは？');
+    // お題は空の状態で開始（ホストが設定する）
+    setCurrentTopic('');
 
-    // デモ用：既存の回答
-    setAnswers([
-      {
-        id: 'a1',
-        playerId: '2',
-        playerName: '大喜利マスター',
-        content: '人間らしい言い訳',
-        zabutonCount: 3,
-        votedBy: ['3', player.id],
-        createdAt: new Date(Date.now() - 60000),
-      },
-      {
-        id: 'a2',
-        playerId: '3',
-        playerName: '座布団コレクター',
-        content: 'ボケに対するツッコミ力',
-        zabutonCount: 5,
-        votedBy: ['2'],
-        createdAt: new Date(Date.now() - 30000),
-      },
-    ]);
+    // 回答も空の状態で開始
+    setAnswers([]);
   }, [hostName]);
 
   // AIでお題を生成
