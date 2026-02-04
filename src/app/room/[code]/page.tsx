@@ -354,8 +354,8 @@ export default function RoomPage() {
             <p className="text-white/50 text-center py-8">まだ回答がありません</p>
           ) : (
             answers.map((answer) => {
-              const hasVoted = currentPlayer && answer.votedBy.includes(currentPlayer.id);
-              const isOwnAnswer = currentPlayer && answer.playerId === currentPlayer.id;
+              const hasVoted = !!(currentPlayer && answer.votedBy.includes(currentPlayer.id));
+              const isOwnAnswer = !!(currentPlayer && answer.playerId === currentPlayer.id);
 
               return (
                 <div
